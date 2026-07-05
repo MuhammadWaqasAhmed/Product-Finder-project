@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Influencer Hub | Product Finder</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">Product Finder</div>
+      <nav class="nav">
+        <a href="/">Dashboard</a>
+        <a href="/#search">Search</a>
+        <a href="/influencer" class="active">Influencer Hub</a>
+      </nav>
+      <div class="auth-box">
+        <span id="auth-user">Guest mode</span>
+        <button class="btn secondary" id="login-open" type="button">Sign in</button>
+        <button class="btn hidden" id="logout-btn" type="button">Logout</button>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="card">
+        <h2>Influencer Profile</h2>
+        <p class="card__subtitle">Set up your creator profile to personalize AI workflows and marketplace automation.</p>
+        <form class="form-grid form-card" id="profile-form">
+          <label class="full">Display name<input id="display-name" required /></label>
+          <label>Niche<input id="niche" placeholder="Beauty, Tech, Fitness..." /></label>
+          <label>Audience size<input id="audience-size" type="number" min="0" /></label>
+          <label class="full">Bio<textarea id="bio" rows="3"></textarea></label>
+          <button class="btn" type="submit">Save profile</button>
+        </form>
+      </section>
+
+      <section class="grid dashboard-grid" style="margin-top: 1rem">
+        <article class="card">
+          <h2>Connect Accounts</h2>
+          <p class="card__subtitle">Link social and affiliate accounts to automate product discovery and content workflows.</p>
+          <form class="form-grid form-card" id="integration-form">
+            <label>Platform
+              <select id="platform" required></select>
+            </label>
+            <label>Account handle<input id="account-handle" placeholder="@creator or store name" required /></label>
+            <label>Account ID<input id="account-id" placeholder="Optional platform user ID" /></label>
+            <label>Access token<input id="access-token" placeholder="Paste OAuth/API token if available" /></label>
+            <div class="full checkbox-grid" id="workflow-preferences"></div>
+            <label class="full"><input id="ai-enabled" type="checkbox" checked /> Enable AI automation for this integration</label>
+            <button class="btn accent" type="submit">Connect account</button>
+          </form>
+        </article>
+
+        <article class="card">
+          <h2>AI Workflow Builder</h2>
+          <p class="card__subtitle">Create automated tasks triggered by trends, price changes, or posting schedules.</p>
+          <form class="form-grid form-card" id="workflow-form">
+            <label class="full">Workflow name<input id="workflow-name" required /></label>
+            <label>Trigger<select id="workflow-trigger">
+              <option value="daily_trend_scan">Daily trend scan</option>
+              <option value="price_drop">Price drop alert</option>
+              <option value="new_product_match">New product match</option>
+              <option value="campaign_end">Campaign end summary</option>
+            </select></label>
+            <label>Schedule<select id="workflow-schedule">
+              <option value="hourly">Hourly</option>
+              <option value="daily" selected>Daily</option>
+              <option value="weekly">Weekly</option>
+            </select></label>
+            <label class="full">Actions (comma separated)<input id="workflow-actions" placeholder="Generate caption, Create affiliate link, Notify me" /></label>
+            <button class="btn" type="submit">Create workflow</button>
+          </form>
+          <h3 style="margin-top: 1rem">AI capabilities</h3>
+          <ul id="ai-capabilities"></ul>
+        </article>
+      </section>
+
+      <section class="grid dashboard-grid" style="margin-top: 1rem">
+        <article class="card">
+          <h2>Connected Integrations</h2>
+          <ul class="integration-list" id="integration-list"></ul>
+        </article>
+        <article class="card">
+          <h2>Active Workflows</h2>
+          <ul class="workflow-list" id="workflow-list"></ul>
+        </article>
+      </section>
+    </main>
+
+    <div class="modal hidden" id="login-modal">
+      <div class="modal__content">
+        <h3>Sign in</h3>
+        <label>Username<input id="login-username" value="demo" /></label>
+        <label>Password<input id="login-password" type="password" value="demo1234" /></label>
+        <button class="btn" id="login-submit" type="button">Login</button>
+        <button class="btn secondary" id="login-close" type="button">Close</button>
+      </div>
+    </div>
+
+    <script src="/assets/auth.js"></script>
+    <script src="/assets/influencer.js"></script>
+  </body>
+</html>

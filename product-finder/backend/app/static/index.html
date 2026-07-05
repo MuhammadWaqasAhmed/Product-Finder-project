@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Finder Analytics</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">Product Finder</div>
+      <nav class="nav">
+        <a href="/" class="active">Dashboard</a>
+        <a href="#search">Search</a>
+        <a href="/influencer">Influencer Hub</a>
+      </nav>
+      <div class="auth-box">
+        <span id="auth-user">Guest mode</span>
+        <button class="btn secondary" id="login-open" type="button">Sign in</button>
+        <button class="btn hidden" id="logout-btn" type="button">Logout</button>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="grid kpi-grid" id="kpi-grid"></section>
+
+      <section class="grid dashboard-grid">
+        <article class="card">
+          <h2>Search Volume</h2>
+          <div class="chart-wrap"><canvas id="search-volume-chart"></canvas></div>
+        </article>
+        <article class="card">
+          <h2>Marketplace Mix</h2>
+          <div class="chart-wrap"><canvas id="provider-mix-chart"></canvas></div>
+        </article>
+        <article class="card">
+          <h2>Category Breakdown</h2>
+          <div class="chart-wrap small"><canvas id="category-chart"></canvas></div>
+        </article>
+      </section>
+
+      <section class="grid dashboard-grid-bottom">
+        <article class="card">
+          <h2>Price Trends</h2>
+          <div class="chart-wrap"><canvas id="price-trend-chart"></canvas></div>
+        </article>
+        <article class="card">
+          <h2>Marketplace Activity</h2>
+          <div class="chart-wrap small"><canvas id="engagement-chart"></canvas></div>
+          <table class="provider-table" id="provider-table">
+            <thead>
+              <tr><th>Provider</th><th>Mode</th><th>Products</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </article>
+        <article class="card">
+          <h2>Top Products</h2>
+          <div class="leaderboard-top" id="leaderboard-top"></div>
+          <ul class="leader-list" id="leaderboard-list"></ul>
+        </article>
+      </section>
+
+      <section class="card search-panel" id="search">
+        <h2>Multi-Marketplace Search</h2>
+        <p class="card__subtitle">Search Amazon, eBay, TikTok Shop, AliExpress, Alibaba, and China market listings.</p>
+        <form class="search-bar" id="search-form">
+          <input id="search-input" type="search" placeholder="Search products across marketplaces..." />
+          <button class="btn accent" type="submit">Search</button>
+        </form>
+        <div class="filters">
+          <label>Category<select id="filter-category"><option value="">All</option></select></label>
+          <label>Brand<select id="filter-brand"><option value="">All</option></select></label>
+          <label>Min price<input id="filter-min-price" type="number" min="0" /></label>
+          <label>Max price<input id="filter-max-price" type="number" min="0" /></label>
+          <label>In stock only<input id="filter-in-stock" type="checkbox" /></label>
+        </div>
+        <p id="search-meta" class="card__subtitle"></p>
+        <div class="product-grid" id="product-grid"></div>
+      </section>
+    </main>
+
+    <div class="modal hidden" id="login-modal">
+      <div class="modal__content">
+        <h3>Sign in</h3>
+        <label>Username<input id="login-username" value="demo" /></label>
+        <label>Password<input id="login-password" type="password" value="demo1234" /></label>
+        <button class="btn" id="login-submit" type="button">Login</button>
+        <button class="btn secondary" id="login-close" type="button">Close</button>
+      </div>
+    </div>
+
+    <script src="/assets/auth.js"></script>
+    <script src="/assets/dashboard.js"></script>
+    <script src="/assets/search.js"></script>
+  </body>
+</html>
